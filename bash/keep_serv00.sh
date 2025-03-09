@@ -13,6 +13,8 @@ reading() { read -p "$(red "$1")" "$2"; }
 
 hy2_port=$1
 
+echo -n "$(hostname)" | base64
+
 USERNAME=$(whoami)
 HOSTNAME=$(hostname)
 export UUID=${UUID:-'fc2a78a1-8088-451e-a4cc-3dc10fb5b5ee'}
