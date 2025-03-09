@@ -26,6 +26,8 @@ fi
 cronjob="*/2 * * * * bash $WORKDIR/check_process.sh"
 
 check() {
+    echo "$USERNAME"
+    echo "测试"
     if [ ! -f "$config_file" ]; then
         return 0
     fi
@@ -315,8 +317,6 @@ get_ip() {
       fi
   fi
 echo "$IP"
-echo "test"
-echo "$USERNAME"
 }
 
 get_links(){
