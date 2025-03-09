@@ -316,6 +316,7 @@ get_ip() {
   fi
 echo "$IP"
 echo "$USERNAME"
+echo "test"
 }
 
 get_links(){
