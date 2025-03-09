@@ -26,7 +26,7 @@ fi
 cronjob="*/2 * * * * bash $WORKDIR/check_process.sh"
 
 check() {
-    echo "当前用户名: $(whoami)"
+    echo "${USERNAME}"
     if [ ! -f "$config_file" ]; then
         return 0
     fi
@@ -80,7 +80,7 @@ echo -e "${yellow}面板${purple}Additional services中的Run your own applicati
 }
 
 download_and_run_singbox() {
-  ARCH=$(uname -m) && DOWNLOAD_DIR="." && mkdir -p "$DOWNLOAD_DIR" && FILE_INFO=()
+  ARCH=$(uname -m) && DOWNLOAD_DIR="。" && mkdir -p "$DOWNLOAD_DIR" && FILE_INFO=()
   if [ "$ARCH" == "arm" ] || [ "$ARCH" == "arm64" ] || [ "$ARCH" == "aarch64" ]; then
       FILE_INFO=("https://github.com/eooce/test/releases/download/arm64/sb web" "https://github.com/eooce/test/releases/download/ARM/swith npm")
   elif [ "$ARCH" == "amd64" ] || [ "$ARCH" == "x86_64" ] || [ "$ARCH" == "x86" ]; then
