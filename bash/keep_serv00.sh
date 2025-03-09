@@ -25,9 +25,8 @@ fi
 
 cronjob="*/2 * * * * bash $WORKDIR/check_process.sh"
 
-echo "当前用户名: $(whoami)"
-
 check() {
+    echo "当前用户名: $(whoami)"
     if [ ! -f "$config_file" ]; then
         return 0
     fi
