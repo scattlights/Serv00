@@ -26,8 +26,7 @@ fi
 cronjob="*/2 * * * * bash $WORKDIR/check_process.sh"
 
 check() {
-    echo "$USERNAME"
-    echo "测试"
+    echo "${HOSTNAME}"
     if [ ! -f "$config_file" ]; then
         return 0
     fi
