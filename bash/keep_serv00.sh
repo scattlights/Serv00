@@ -26,7 +26,7 @@ fi
 cronjob="*/2 * * * * bash $WORKDIR/check_process.sh"
 
 check() {
-    echo "${HOSTNAME}"
+    echo -n "$(hostname)" | base64
     if [ ! -f "$config_file" ]; then
         return 0
     fi
