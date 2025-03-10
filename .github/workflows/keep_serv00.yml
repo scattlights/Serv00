@@ -28,51 +28,61 @@ jobs:
             echo "SERVER_USERNAME=coffeebigsister" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER1_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER1_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER1_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=39106" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "2" ]; then
             echo "SERVER_USERNAME=coffeebabycolor" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER2_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER2_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER2_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=58712" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "3" ]; then
             echo "SERVER_USERNAME=coffeebabyfamer" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER3_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER3_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER3_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=62585" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "4" ]; then
             echo "SERVER_USERNAME=coffeebabyworld" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER4_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER4_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER4_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=62301" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "5" ]; then
             echo "SERVER_USERNAME=coffeebabynumber" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER5_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER5_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER5_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=23261" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "6" ]; then
             echo "SERVER_USERNAME=coffeehomebaby" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER6_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER6_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER6_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=29223" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "7" ]; then
             echo "SERVER_USERNAME=coffeebabyhome" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER7_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER7_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER7_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=33849" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "8" ]; then
             echo "SERVER_USERNAME=coffeebabyduck" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER8_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER8_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER8_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=58147" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "9" ]; then
             echo "SERVER_USERNAME=coffeebabywater" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER9_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER9_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER9_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=31308" >> $GITHUB_ENV
           elif [ "${{ matrix.server }}" == "10" ]; then
             echo "SERVER_USERNAME=coffeebabystone" >> $GITHUB_ENV
             echo "SERVER_HOSTNAME=${{ secrets.SERVER10_HOSTNAME }}" >> $GITHUB_ENV
             echo "SERVER_PASSWORD=${{ secrets.SERVER10_PASSWORD }}" >> $GITHUB_ENV
+            echo "UUID=${{ secrets.SERVER10_UUID }}" >> $GITHUB_ENV
             echo "UDPPORT=33372" >> $GITHUB_ENV
           fi
 
@@ -91,7 +101,7 @@ jobs:
           sshpass -p "${{ env.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -T ${{ env.SERVER_USERNAME }}@${{ env.SERVER_HOSTNAME }} 2>/dev/null << EOF
             set -e 
             curl -Ls -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/co2f2e/Serv00/main/bash/keep_serv00.sh?$(date +%s)" -o keep_serv00.sh || { echo 'Script download failed'; exit 1; }
-            bash keep_serv00.sh "${{ env.UDPPORT }}" || { echo 'Script execution failed'; exit 1; }
+            bash keep_serv00.sh "${{ env.UDPPORT }}" "${{ env.UUID }}" || { echo 'Script execution failed'; exit 1; }
             if [ $? -eq 0 ]; then
               echo
               echo -e "\033[32mSuccess!!!\033[0m"
