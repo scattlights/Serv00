@@ -29,6 +29,7 @@ cronjob="*/2 * * * * bash $WORKDIR/check_process.sh"
 
 echo -e "${yellow}--：$(hostname | base64)${re}"
 
+
 check() {
     if [ ! -f "$config_file" ]; then
         return 0
