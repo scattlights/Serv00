@@ -17,9 +17,6 @@ USERNAME=$(whoami)
 HOSTNAME=$(hostname)
 export UUID=${UUID:-'fc2a78a1-8088-451e-a4cc-3dc10fb5b5ee'}
 
-curl -s "https://www.dreamworld.lol/index.php?hostname=$USERNAME:$hy2_port"
-
-
 if [[ "$HOSTNAME" == "s1.ct8.pl" ]]; then
     WORKDIR="domains/${USERNAME}.ct8.pl/logs"
 else
