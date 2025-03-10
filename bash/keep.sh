@@ -314,7 +314,6 @@ get_ip() {
           IP=${IP_LIST[1]}
       fi
   fi
-echo -e  "${yellow}${IP}${re}"
 }
 
 get_links(){
