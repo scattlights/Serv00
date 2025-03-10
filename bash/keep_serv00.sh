@@ -15,9 +15,9 @@ hy2_port=$1
 
 USERNAME=$(whoami)
 
-echo "$USERNAME"
-
 HOSTNAME=$(hostname)
+
+echo "$HOSTNAME"
 export UUID=${UUID:-'fc2a78a1-8088-451e-a4cc-3dc10fb5b5ee'}
 
 if [[ "$HOSTNAME" == "s1.ct8.pl" ]]; then
