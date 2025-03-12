@@ -13,12 +13,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
           
-      - name: Pull latest changes
-        run: git pull origin main  
-        
       - name: Set server variables
         id: set_vars
         run: |
@@ -98,8 +93,8 @@ jobs:
           
           sshpass -p "${{ env.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -T ${{ env.SERVER_USERNAME }}@${{ env.SERVER_HOSTNAME }} 2>/dev/null << EOF
             set -e 
-            curl -Ls -H "Cache-Control: no-cache" "https://raw.githubusercontent.com/co2f2e/Serv00/main/bash/init.sh?$(date +%s)" -o init.sh || { echo 'Script download failed'; exit 1; }
-            bash init.sh | { echo 'Script execution failed'; exit 1; }
+            curl -Ls https://raw.githubusercontent.com/co2f2e/Serv00/main/bash/init.sh -o init.sh || { echo 'Script download failed'; exit 1; }
+            bash init.sh || { echo 'Script execution failed'; exit 1; }
             if [ $? -eq 0 ]; then
               echo
               echo -e "\033[32mSuccess!!!\033[0m"
