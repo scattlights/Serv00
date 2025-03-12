@@ -1,9 +1,9 @@
-name: init_serv00
+name: singbox_uninstall
 
 on:
   workflow_dispatch:  
 jobs:
-  init_serv00:
+  singbox_uninstall:
     runs-on: ubuntu-latest
 
     strategy:
@@ -93,16 +93,6 @@ jobs:
           
           sshpass -p "${{ env.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no -T ${{ env.SERVER_USERNAME }}@${{ env.SERVER_HOSTNAME }} 2>/dev/null << EOF
             set -e 
-            curl -Ls https://raw.githubusercontent.com/co2f2e/Serv00/main/bash/init.sh -o init.sh || { echo 'Script download failed'; exit 1; }
-            bash init.sh || { echo 'Script execution failed'; exit 1; }
-            if [ $? -eq 0 ]; then
-              echo
-              echo -e "\033[32mSuccess!!!\033[0m"
-              echo
-            else
-              echo
-              echo -e "\033[31mFailure!!!\033[0m"
-              echo
-              exit 1
-            fi
+            curl -Ls https://raw.githubusercontent.com/co2f2e/Serv00/main/bash/singbox_uninstall -o singbox_uninstall || { echo 'Script download failed'; exit 1; }
+            bash singbox_uninstall || { echo 'Script execution failed'; exit 1; }
           EOF
